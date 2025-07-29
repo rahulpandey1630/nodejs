@@ -1,0 +1,53 @@
+// data.json
+{
+  "name": "Rahul",
+  "age": 22
+}
+
+// app.js
+const data = require('./data.json');  // Node auto-parses JSON
+console.log(data.name);  // Rahul
+
+
+
+
+//in es modules
+
+// data.json
+{
+  "name": "Rahul",
+  "age": 22
+}
+
+// app.mjs (or .js with "type": "module")
+import data from './data.json' assert { type: 'json' };
+console.log(data.name);  // Rahul
+
+
+Why assert { type: 'json' } in ES Modules?
+ES Modules are strict, so Node.js requires you to explicitly declare JSON imports to avoid ambiguity.
+CommonJS doesn’t need this because require() automatically parses JSON
+
+
+
+
+// JSON.stringify() converts a JavaScript object into a JSON string.
+
+const user = {
+    name: "Rahul",
+    age: 22,
+    skills: ["Node.js", "JavaScript"]
+};
+
+// Convert object to JSON string
+const jsonData = JSON.stringify(user);
+console.log(jsonData);
+// Output: {"name":"Rahul","age":22,"skills":["Node.js","JavaScript"]}
+
+// Why use it?
+// - To send data over a network (APIs).
+// - To save data in files or databases in JSON format.
+
+// To convert back to object, use JSON.parse():
+const parsedData = JSON.parse(jsonData);
+console.log(parsedData.name);  // Rahul

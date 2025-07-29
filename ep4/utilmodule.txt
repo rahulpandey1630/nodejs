@@ -1,0 +1,58 @@
+// What is a Module in Node.js?
+
+// - A module is any file or package that contains code (functions, variables, classes) 
+//   which can be reused in other files.
+// - Each JavaScript file in Node.js is treated as a separate module.
+// - Modules help break large programs into smaller, reusable pieces (modularity).
+
+// Types of Modules in Node.js:
+// 1. Core/Built-in Modules (e.g., fs, http, path, util).
+// 2. Local Modules (your own files).
+// 3. Third-party Modules (installed via npm, like express).
+
+// Example (Local Module):
+// math.js
+function add(a, b) {
+    return a + b;
+}
+module.exports = add;   // Export
+
+// app.js
+const add = require('./math');  // Import
+console.log(add(5, 3));  // 8
+
+// Why Modules?
+// - Organize code.
+// - Reuse functions easily.
+// - Avoid global scope pollution.
+
+
+
+
+
+// The 'util' module is a built-in Node.js module.
+// It provides utility functions for debugging, formatting, and working with asynchronous code.
+
+// Common uses:
+
+const util = require('util');
+
+// 1. util.format() - Works like printf (formats strings)
+console.log(util.format('Hello %s, your score is %d', 'Rahul', 95));
+// Output: Hello Rahul, your score is 95
+
+// 2. util.types - Type checking helpers
+console.log(util.types.isDate(new Date()));  // true
+console.log(util.types.isDate('2025-07-28')); // false
+
+// 3. util.promisify() - Converts callback-based functions to Promises
+const fs = require('fs');
+const readFilePromise = util.promisify(fs.readFile);
+
+readFilePromise('sample.txt', 'utf8')
+  .then(data => console.log(data))
+  .catch(err => console.error(err));
+
+// 4. util.inspect() - Prints objects with full details (good for debugging)
+const obj = { name: 'Rahul', age: 22, skills: { node: true } };
+console.log(util.inspect(obj, { showHidden: false, depth: null, colors: true }));

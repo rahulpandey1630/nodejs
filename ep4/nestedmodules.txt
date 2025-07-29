@@ -1,0 +1,31 @@
+// Nested modules = organizing exports in multiple files/folders, 
+// and combining them so they can be imported cleanly.
+
+// Example folder structure:
+/*
+project/
+  utils/
+    math.js
+    string.js
+  index.js
+*/
+
+// math.js
+function add(a, b) { return a + b; }
+function subtract(a, b) { return a - b; }
+module.exports = { add, subtract };
+
+// string.js
+function toUpper(str) { return str.toUpperCase(); }  
+module.exports = { toUpper };
+
+// index.js (Combine nested modules)
+const math = require('./utils/math');
+const string = require('./utils/string');
+
+module.exports = { math, string };
+
+// app.js (Main file)
+const { math, string } = require('./index');
+console.log(math.add(2, 3));       // 5
+console.log(string.toUpper('hi')); // HI

@@ -1,0 +1,48 @@
+// REPL = Read-Eval-Print Loop in Node.js.
+// It is an interactive shell where you can run JavaScript code line by line.
+
+// Meaning of REPL:
+// - Read: Reads the user input (JavaScript code).
+// - Eval: Evaluates (executes) the code.
+// - Print: Prints the result.
+// - Loop: Repeats the process until you exit.
+
+// How to start REPL in Node.js (Windows/macOS/Linux):
+// 1. Open terminal or command prompt.
+// 2. Type:  node
+// 3. You will enter the REPL prompt (">").
+
+// Example:
+/*
+> 2 + 3
+5
+> console.log("Hello")
+Hello
+undefined
+> .exit   // to exit REPL
+*/
+
+// Uses:
+// - Test small pieces of code quickly.
+// - Debug or explore JavaScript features.
+// - Access Node.js modules interactively.
+
+
+
+
+// Similarity: 
+// - Both let you write and run JavaScript interactively line by line.
+
+// Differences:
+
+// 1. Environment:
+// - Browser Console runs inside a browser (like Chrome, Firefox).
+// - Node.js REPL runs in your terminal (server-side environment).
+
+// 2. Features:
+// - Browser Console can access the DOM (document, window, HTML elements).
+// - Node.js REPL can access Node modules (fs, http) and the file system.
+
+// 3. Purpose:
+// - Browser Console is mainly for debugging websites and frontend scripts.
+// - Node.js REPL is for testing server-side code, Node APIs, and experimenting with JS outside the browser.
