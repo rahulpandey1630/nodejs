@@ -1,0 +1,123 @@
+// Node.js is a JavaScript runtime built on Chrome's V8 JavaScript engine.(// Chrome V8 is Google's open-source JavaScript and WebAssembly engine.
+// It is written in C++ and powers Google Chrome and Node.js.
+// Role: Executes JavaScript code by converting it into machine code for fast execution.)
+
+// Node.js was developed by Ryan Dahl in 2009. .javascript runtime
+
+
+// It allows developers to run JavaScript code outside of the browser (on the server). run javscript anywhere
+
+// Node.js uses an event-driven, non-blocking I/O model, making it lightweight and efficient.
+(// Event-driven: Node.js reacts to events (like a file finished reading or a request arrived)
+// instead of running tasks one by one in order.
+// Non-blocking I/O: Node.js does not wait for slow tasks (like reading files or databases).
+// It continues running other code and handles the result later using events/callbacks.
+// This makes Node.js fast, lightweight, and able to handle many users at the same time.
+)
+
+
+// It is open-source and cross-platform (works on Windows, macOS, Linux, etc.).
+
+// Main use: Building fast, scalable network applications (like web servers, APIs). maintained by openjs foundation.
+
+// Features:
+// 1. Asynchronous & Non-blocking: Handles multiple requests without waiting (event loop).
+// 2. Single-threaded but highly scalable: Uses callbacks, promises, async/await for concurrency.
+// 3. Built-in modules: 'fs' for file system, 'http' for creating servers, 'path', etc.
+// 4. Package ecosystem (npm): Millions of reusable libraries.
+// 5. Fast execution: V8 engine compiles JavaScript to machine code.
+
+// Why use Node.js?
+// - Handles many connections efficiently (good for real-time apps like chats, gaming).
+// - Same language (JavaScript) for frontend & backend.
+// - Large community and ecosystem.
+
+// Common applications:
+// - REST APIs & Microservices
+// - Real-time chat applications
+// - Streaming apps (video/audio)
+// - Single Page Applications (SPAs)  
+// - Command-line tools
+
+// Example: Simple HTTP server in Node.js
+
+/*
+const http = require('http');          // Import http module
+
+const server = http.createServer((req, res) => {
+    res.statusCode = 200;             // Set status OK
+    res.setHeader('Content-Type', 'text/plain');
+    res.end('Hello World from Node.js!\n');
+});
+
+server.listen(3000, () => {
+    console.log('Server running at http://localhost:3000/');
+});
+*/
+
+// Run this with: `node filename.js`
+
+
+
+// History of Node.js:
+
+// 2009:
+// - Created by Ryan Dahl (for Linux & macOS).
+// - Initially planned to use SpiderMonkey (Firefox JS engine) but switched to V8 (Google Chrome engine).
+// - Goal: Create a web server with non-blocking I/O (unlike blocking Apache HTTP server).
+
+// 2010:
+// - NPM (Node Package Manager) launched to manage libraries.
+
+// 2011:
+// - Joyent (company) with Microsoft (Windows support added).
+
+// 2012:
+// - Isaac (creator of npm) involved in development.
+
+// 2014:
+// - Node.js maintained by Joyent, but community concerns arose (led to a fork).
+
+// 2015:
+// - io.js fork created by community (led by Fedor).
+// - Later, Node.js Foundation formed in September 2015 (merged back with io.js).
+
+// 2019:
+// - JS Foundation and Node.js Foundation merged to form OpenJS Foundation (current governance).
+
+// Key Points:
+// - Node.js built using Chrome’s V8 engine.
+// - Uses non-blocking I/O for high performance.
+// - Replaced older blocking servers like Apache HTTP server.
+// - Grew rapidly due to npm and community contributions.
+
+
+
+
+
+// WebAssembly (Wasm) is a low-level, binary instruction format that runs in web browsers.
+// It is designed to run at near-native speed by leveraging the hardware directly.
+
+// Purpose:
+// - Allows code written in languages like C, C++, and Rust to run on the web.
+// - Works alongside JavaScript (not a replacement).
+
+// Why WebAssembly?
+// - JavaScript is slower for heavy computations (e.g., 3D graphics, games, video editing).
+// - Wasm runs faster because it's compiled to a binary format, closer to machine code.
+
+// Features:
+// - Fast: Executes at near-native speed.
+// - Portable: Runs on any browser and platform (cross-platform).
+// - Secure: Runs in a sandboxed environment (no direct access to the system).
+// - Works with JavaScript: Can be imported into JS apps.
+
+// Use Cases:
+// - Games and 3D applications in browsers.
+// - Video/image processing tools.
+// - Scientific simulations or heavy calculations.
+// - Running existing desktop apps on the web.
+
+// How it fits with Node.js / Browsers:
+// - V8 (used by Chrome and Node.js) can run WebAssembly code.
+// - Developers write C++/Rust, compile to .wasm file, and load it in JavaScript.

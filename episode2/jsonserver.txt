@@ -1,0 +1,165 @@
+// What is a Server?
+// - A server is a computer or program that listens for client requests (like a browser) and responds.
+// - It can serve web pages, APIs, files, or handle data processing.
+// - Example: When you visit a website, your browser (client) sends a request to the server, 
+//   and the server responds with HTML, JSON, or other data.
+
+// Traditionally:
+// - Servers were built using languages like PHP, Java, C#, or Python.
+// - JavaScript was only used on the browser (frontend).
+
+// JavaScript on the Server (via Node.js):
+// - Node.js allows JavaScript to run outside the browser, on the server.
+// - Uses Chrome’s V8 engine to execute JS code quickly.
+// - Node.js provides built-in modules (http, fs, path, etc.) to create servers, handle files, and build APIs.
+
+// Why use JavaScript on the Server?
+// - Same language for both frontend (browser) and backend (server) → easier for developers.
+// - Event-driven and non-blocking → can handle many requests at once efficiently.
+// - Huge ecosystem (npm) for building scalable apps quickly.
+
+// How Node.js acts as a Server:
+// 1. Node.js listens for incoming client requests (HTTP).
+// 2. Uses the "http" module to create a web server.
+// 3. Sends back a response (HTML, JSON, files, etc.).
+
+// Basic Node.js Server Example:
+
+/*
+const http = require('http');  // Import the built-in http module
+
+// Create a server
+const server = http.createServer((req, res) => {
+    res.writeHead(200, { 'Content-Type': 'text/plain' });  // Set status and headers
+    res.end('Hello from Node.js server!\n');               // Send response
+});
+
+// Start the server on port 3000
+server.listen(3000, () => {
+    console.log('Server running at http://localhost:3000/');
+});
+*/
+
+// How it Works:
+// - When a user visits http://localhost:3000, Node.js receives the request.
+// - It processes the request asynchronously and sends a response ("Hello from Node.js server!").
+// - No blocking; Node.js can handle multiple requests at the same time.
+
+// Advantages of JavaScript on the Server (Node.js):
+// - Fast (V8 engine + non-blocking I/O).
+// - Same language (JS) across the stack.
+// - Large package ecosystem (npm).
+// - Real-time support (websockets for chat, games).
+// - Scalable for modern apps (APIs, microservices).
+
+// Common Uses:
+// - RESTful APIs
+// - Real-time apps (chat apps, live dashboards)
+// - Web servers
+// - Streaming services
+// - IoT backends
+
+
+
+
+// Node.js itself is NOT written entirely in C++.(62 percent js , 23 percent cpp,10 percent python)
+// It is a runtime built using multiple technologies:
+
+// 1. JavaScript (for the APIs and core runtime logic).
+// 2. C++ (for the performance-critical parts and to connect with system resources).
+// 3. V8 Engine (written in C++) compiles JavaScript into machine code.(around 72 percent in cpp)
+V8 can be embedded into any C++ application.
+nodejs is a c++ application with v8 embedded into it.
+
+// Why C++?
+// - Handles low-level operations (like networking, file system, threads).
+// - Gives Node.js high performance by using native code where speed matters.
+
+// In short:
+// - Node.js apps are written in JavaScript (by developers).
+// - Under the hood, Node.js uses C++ to make JS work fast with the system.
+
+
+
+
+// V8 alone can only execute JavaScript — it doesn’t provide features to interact with the system.
+// It can’t create servers, read/write files, or handle networking on its own.
+
+// Node.js was built to:
+// 1. Use V8 to run JavaScript outside the browser (on the server).
+// 2. Add system-level APIs (written in C++) like:
+//    - File system access (fs module)
+//    - Networking (http, net modules)
+//    - Process management
+// 3. Provide an Event Loop and Non-blocking I/O for high performance.
+// 4. Offer a package ecosystem (npm) for rapid development.
+
+// In short:
+// - V8 is just the engine (executes JS).
+// - Node.js is the runtime environment (adds libraries + tools to use JS as a full backend/server platform).
+
+
+
+
+
+// ECMAScript (ES) is the official standard that defines how JavaScript works.
+// JavaScript is an implementation of ECMAScript (like Chrome, Node.js follow ES rules).
+
+// Why ECMAScript?
+// - To keep JavaScript consistent across all browsers and environments.
+// - Ensures all engines (V8, SpiderMonkey(firefox), JavaScriptCore(safari)) follow the same language features.
+
+// Versions:
+// - ES3 (1999): Older browsers.
+// - ES5 (2009): Added strict mode, JSON support.
+// - ES6 (2015): Major update (let/const, arrow functions, classes, promises, modules).
+// - ES7+ (2016 onwards): Yearly updates (async/await, optional chaining, etc.).
+
+// In short:
+// - ECMAScript = Specification (the rulebook).
+// - JavaScript = Language built following ECMAScript rules.
+
+// Without ECMAScript:
+// - JavaScript would behave differently in different browsers (inconsistent).
+
+
+
+
+
+// V8 is written in C++ and acts as a bridge between JavaScript (high-level) and machine code (low-level).
+//It implements ECMAScript and WebAssembly, and runs on Windows, macOS, and Linux systems that use x64, IA-32, or ARM processors.
+// Process:
+// 1. Developers write code in JavaScript (a high-level language).
+// 2. V8 (written in C++) takes this JavaScript and compiles it.
+// 3. It converts JavaScript into:
+//    - Assembly code (low-level, closer to hardware).
+//    - Machine code (binary instructions the CPU understands).
+// 4. This compiled machine code is executed by the computer’s processor directly.
+
+// Why this matters:
+// - JavaScript itself can’t talk directly to hardware (too abstract).
+// - V8’s C++ core compiles and optimizes it so it runs very fast, almost like native apps.
+
+
+
+
+// x64, IA-32, and ARM are types of CPU architectures (instruction sets).
+// They define how machine code is executed by the processor.
+
+// 1. x64 (also called x86-64):
+// - 64-bit architecture used in most modern desktops and servers (Intel/AMD).
+// - Can process 64 bits of data at a time (larger registers, more memory access).
+
+// 2. IA-32 (x86):
+// - 32-bit architecture (older, used before x64 became standard).
+// - Can only access up to 4GB RAM directly.
+// - Still supported for backward compatibility in many systems.
+
+// 3. ARM:
+// - Reduced Instruction Set Computing (RISC) architecture.
+// - Power-efficient, commonly used in smartphones, tablets, and IoT devices.
+// - Also used in some laptops and servers (like Apple M1/M2 chips).
+
+// Why this matters for Node.js / V8:
+// - V8 compiles JavaScript into machine code specific to these CPU architectures.
+// - The compiled code differs depending on whether the system is x64, IA-32, or ARM.
