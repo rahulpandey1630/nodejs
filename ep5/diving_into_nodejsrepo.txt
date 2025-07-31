@@ -1,0 +1,159 @@
+// ✅ When we use require('./xyz.js'), Node.js does NOT just read the file directly.
+// 🔄 Node wraps the code inside xyz.js in a function like this:
+(function (exports, require, module, __filename, __dirname) {
+    // Contents of xyz.js go here
+});
+
+// 📦 Purpose of wrapping:
+// - Provides local scope (avoids polluting global scope)
+// - Gives access to useful variables automatically
+
+// 📌 Variables provided:
+// - exports: object to export things from this module
+// - require: function to import other modules
+// - module: holds metadata and the exports object
+// - __filename: full path of the current file
+// - __dirname: path of the directory containing the file
+
+// 🧠 This is how CommonJS module system works internally in Node.js
+
+// ✅ So, require('./xyz.js') → actually loads and executes the wrapped function
+// ✅ Returns module.exports from xyz.js
+
+
+
+
+
+// ✅ In Node.js, when you use require('./xyz.js'), it doesn't just read the file directly.
+// 🔒 Instead, Node wraps the entire content of xyz.js in a function — this function is an IIFE.
+
+// ✅ IIFE = Immediately Invoked Function Expression
+// 🧠 It's a JavaScript function that runs as soon as it is defined.
+
+// 📦 Node wraps the module code like this:
+
+(function (exports, require, module, __filename, __dirname) {
+    // 📄 All code written in xyz.js is placed here
+
+    // ✅ This function is called immediately by Node.js (IIFE)
+})();
+
+// 🔄 This makes every file in Node a separate module with its own scope
+// 🔐 Avoids polluting the global scope and enables modular structure
+
+// ✅ So, require('./xyz.js') actually loads and runs the IIFE-wrapped module,
+// ✅ and returns module.exports from inside that function.
+
+
+
+//require("/path");
+// All the code of the module is wrapped inside the function (IIFE)
+//IIFE - Imediately Invoked Function Expression
+
+(function () {
+  // aAl modules are converted like this before executing 
+  // All the code of the module is runs here
+
+})();
+
+
+
+// Q: How are variables & functions kept private in different modules?
+
+// A: Using IIFE (Immediately Invoked Function Expression) and require() statement
+
+// - IIFE provides a **wrapping scope**
+// - This wrapping scope keeps variables/functions **encapsulated**
+// - require() is used to **import/export modules**, maintaining modular boundaries
+
+
+ 
+
+ //How do you get access to module, require, etc. in Node.js?
+ // ✅ Node.js wraps every module (file) inside a function
+//    This function is called an IIFE (Immediately Invoked Function Expression)
+
+// ✅ Syntax of internal wrapper used by Node.js:
+(function(exports, require, module, __filename, __dirname) {
+    // 👉 Your module code lives here
+});
+
+// ✅ Because of this, every file gets access to:
+//    → require     → used to import other modules
+//    → module      → contains info about current module
+//    → exports     → used to export functions/objects
+//    → __filename  → full path of current file
+//    → __dirname   → directory name of current file
+
+// ✅ Purpose of the wrapper function:
+//    → Provides private scope (avoids global variable conflict)
+//    → Allows modularity and export/import features
+//    → Enables efficient execution and debugging
+
+// ✅ This pattern is part of the CommonJS module system in Node.js
+
+
+  
+// the internal working of require(path) in Node.js.
+
+// ✅ require(path) – Node.js module loading system (CommonJS)
+
+// 1. Resolving the Module
+//    → Converts the path into an absolute path
+//    → Supports local files (./ or ../), .json, or core modules (like 'fs', 'http', etc.)
+
+// 2. Loading the Module
+//    → Reads the file content based on the file type
+//    → .js → loaded as JavaScript
+//    → .json → parsed as JSON
+
+// 3. Wrapping Inside IIFE
+//    → The code is wrapped in a function by Node.js:
+//      (function(exports, require, module, __filename, __dirname) { ... });
+//    → This creates a private scope for the module
+
+// 4. Evaluation
+//    → The wrapped function is executed
+//    → The result is assigned to module.exports
+
+// 5. Caching
+//    → Once a module is loaded, it is cached
+//    → Future require calls return the cached version to improve performance
+
+
+//wrapped inside  iife then passed to V8
+
+
+
+
+// libuv is a multi-platform C library used by Node.js.
+// It provides an event-driven, asynchronous I/O model.
+
+// 🔁 Event Loop:
+// libuv implements the event loop that keeps Node.js non-blocking.
+// It listens for events (I/O, timers, etc.) and executes callbacks.
+
+// 🧵 Thread Pool:
+// libuv has a thread pool to handle blocking operations (like fs or DNS).
+// Default size is 4 threads. Can be changed with UV_THREADPOOL_SIZE.
+
+// 🌐 Cross-platform I/O:
+// On Linux, it uses epoll.
+// On macOS/BSD, it uses kqueue.
+// On Windows, it uses IOCP.
+
+// 🔧 libuv handles:
+// - File system operations (fs)
+// - Network (TCP, UDP)
+// - DNS lookups
+// - Timers
+// - Signal handling
+// - Child processes
+// - Thread pool tasks
+
+// 📦 Architecture:
+// JS Code → Node.js C++ → libuv → OS I/O APIs
+
+// ✅ Importance:
+// Makes Node.js fast, asynchronous, and scalable
+// Abstracts OS-specific I/O so developers write consistent async JS code
